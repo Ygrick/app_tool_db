@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="post" action="{{ url_for('save') }}" enctype='multipart/form-data'>
+		<fieldset>
+			<legend class="hidden-first">Add New Count_Each_Webserver</legend>
+			<input name="cat" type="hidden" value='count_each_webserver'>
+			<input name="modifier" type="hidden" value='id_server'>
+			<input name="id" type="hidden" value="{{data[0]}}">
+			<input name="act" type="hidden" value="{{act}}">
+		
+			<label>Id Server</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="id_server"
+				value="{{data[0]}}" /><br>
+			<label>Kolvo</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="kolvo"
+				value="{{data[1]}}" /><br><br>
+			<input type="submit" value=" Save " class="btn btn-success">
+		</fieldset>
+	</form>
+{% endblock %}

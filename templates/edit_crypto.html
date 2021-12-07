@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="post" action="{{ url_for('save') }}" enctype='multipart/form-data'>
+		<fieldset>
+			<legend class="hidden-first">Add New Crypto</legend>
+			<input name="cat" type="hidden" value='crypto'>
+			<input name="modifier" type="hidden" value='company'>
+			<input name="id" type="hidden" value="{{data[0]}}">
+			<input name="act" type="hidden" value="{{act}}">
+		
+			<label>Company</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="company"
+				value="{{data[0]}}" /><br><br>
+			<input type="submit" value=" Save " class="btn btn-success">
+		</fieldset>
+	</form>
+{% endblock %}

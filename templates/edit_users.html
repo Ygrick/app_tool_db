@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="post" action="{{ url_for('save') }}" enctype='multipart/form-data'>
+		<fieldset>
+			<legend class="hidden-first">Add New Users</legend>
+			<input name="cat" type="hidden" value='users'>
+			<input name="modifier" type="hidden" value='id'>
+			<input name="id" type="hidden" value="{{data[0]}}">
+			<input name="act" type="hidden" value="{{act}}">
+		
+			<label>Name</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="name"
+				value="{{data[1]}}" /><br>
+			<label>Email</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="email"
+				value="{{data[2]}}" /><br>
+			<label>Password</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="password"
+				value="{{data[3]}}" /><br>
+			<label>Role</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="role"
+				value="{{data[4]}}" /><br><br>
+			<input type="submit" value=" Save " class="btn btn-success">
+		</fieldset>
+	</form>
+{% endblock %}

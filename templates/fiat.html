@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<a class="btn btn-primary" href="./edit_fiat/add/0">
+		<i class="glyphicon glyphicon-plus-sign"></i> Add New Fiat
+	</a>
+	<h1>Fiat</h1>
+	<p>This table includes {{table_count}} fiat</p>
+	<table id="sorted" class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Country</th>
+				<th>Code Currency</th>
+
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row_data in data %}
+			<tr>
+				{% for d in row_data %}
+					<td>{{d}}</td>
+				{% endfor %}
+				<td>
+					<a href="./edit_fiat/edit/{{row_data[0]}}">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+				</td>
+				<td>
+					<a 
+						href="./save?cat=fiat&act=delete&modifier=country&id={{row_data[0]}}"
+						onclick="return navConfirm(this.href);">
+					<i class="glyphicon glyphicon-trash"></i>
+					</a>
+					</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

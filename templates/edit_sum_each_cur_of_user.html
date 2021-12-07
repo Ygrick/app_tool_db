@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="post" action="{{ url_for('save') }}" enctype='multipart/form-data'>
+		<fieldset>
+			<legend class="hidden-first">Add New Sum_Each_Cur_Of_User</legend>
+			<input name="cat" type="hidden" value='sum_each_cur_of_user'>
+			<input name="modifier" type="hidden" value='id'>
+			<input name="id" type="hidden" value="{{data[0]}}">
+			<input name="act" type="hidden" value="{{act}}">
+		
+			<label>Id</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="id"
+				value="{{data[0]}}" /><br>
+			<label>Currency</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="currency"
+				value="{{data[1]}}" /><br>
+			<label>Volume</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="volume"
+				value="{{data[2]}}" /><br>
+			<label>Cost</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="cost"
+				value="{{data[3]}}" /><br>
+			<label>Id Of User</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="id_of_user"
+				value="{{data[4]}}" /><br>
+			<label>Sum</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="sum"
+				value="{{data[5]}}" /><br><br>
+			<input type="submit" value=" Save " class="btn btn-success">
+		</fieldset>
+	</form>
+{% endblock %}

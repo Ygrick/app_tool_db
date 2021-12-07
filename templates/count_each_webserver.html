@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<a class="btn btn-primary" href="./edit_count_each_webserver/add/0">
+		<i class="glyphicon glyphicon-plus-sign"></i> Add New Count_Each_Webserver
+	</a>
+	<h1>Count Each Webserver</h1>
+	<p>This table includes {{table_count}} count_each_webserver</p>
+	<table id="sorted" class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Id Server</th>
+				<th>Kolvo</th>
+
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row_data in data %}
+			<tr>
+				{% for d in row_data %}
+					<td>{{d}}</td>
+				{% endfor %}
+				<td>
+					<a href="./edit_count_each_webserver/edit/{{row_data[0]}}">
+						<i class="glyphicon glyphicon-edit"></i>
+					</a>
+				</td>
+				<td>
+					<a 
+						href="./save?cat=count_each_webserver&act=delete&modifier=id_server&id={{row_data[0]}}"
+						onclick="return navConfirm(this.href);">
+					<i class="glyphicon glyphicon-trash"></i>
+					</a>
+					</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

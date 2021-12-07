@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="post" action="{{ url_for('save') }}" enctype='multipart/form-data'>
+		<fieldset>
+			<legend class="hidden-first">Add New Currency</legend>
+			<input name="cat" type="hidden" value='currency'>
+			<input name="modifier" type="hidden" value='code_currency'>
+			<input name="id" type="hidden" value="{{data[0]}}">
+			<input name="act" type="hidden" value="{{act}}">
+		
+			<label>Cost</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="cost"
+				value="{{data[1]}}" /><br>
+			<label>Type</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="type"
+				value="{{data[2]}}" /><br>
+			<label>Name</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="name"
+				value="{{data[3]}}" /><br>
+			<label>Capitalization</label>
+			<input 
+				class="form-control" 
+				type="text" 
+				name="capitalization"
+				value="{{data[4]}}" /><br><br>
+			<input type="submit" value=" Save " class="btn btn-success">
+		</fieldset>
+	</form>
+{% endblock %}
