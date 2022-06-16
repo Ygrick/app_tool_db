@@ -7,19 +7,46 @@
 	</a>
 	<h1>App</h1>
 	<p>This table includes {{table_count}} app</p>
-	<table id="sorted" class="table table-striped table-bordered">
+
+	<table border="0" class="table d-flex justify-content-start col-md-offset">
+        <tbody>
+			<tr>
+				<td ><input placeholder="Minimum ID:" type="text" id="min_id" name="min_id"></td>
+				<td></td>
+				<td><input placeholder="Minimum CUR:" type="text" id="min_cur" name="min_cur"></td>
+				<td></td>
+				<td><input placeholder="Minimum id server:" type="text" id="min_server" name="min_server"></td>
+			</tr>
+			<tr>
+				<td><input placeholder="Maximum ID:" type="text" id="max_id" name="max_id"></td>
+				<td></td>
+				<td><input placeholder="Maximum CUR:" type="text" id="max_cur" name="max_cur"></td>
+				<td></td>
+				<td><input placeholder="Maximum id server:" type="text" id="max_server" name="max_server"></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+
+	<table id="sorted" class="table table-bordered">
+
 		<thead>
 			<tr>
 				<th>Id</th>
+
 				<th>Currency Code</th>
 				<th>Id Server</th>
 
 				<th>Edit</th>
 				<th>Delete</th>
 			</tr>
+
 		</thead>
 		<tbody>
 			{% for row_data in data %}
+
 			<tr>
 				{% for d in row_data %}
 					<td>{{d}}</td>

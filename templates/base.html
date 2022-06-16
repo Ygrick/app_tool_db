@@ -7,7 +7,7 @@
 		<meta name="author" content="@housamz">
 		<meta name="description" content="Mage">
 		<title>Admin Panel</title>
-
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
 		<!-- Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-h21C2fcDk/eFsW9sC9h0dhokq5pDinLNklTKoxIZRUn3+hvmgQSffLLQ4G4l2eEr" crossorigin="anonymous">
@@ -24,21 +24,24 @@
 
 	</head>
 	<body>
-		<div class="wrapper">
+		<div>
             {% include "sidebar.html" %}
-
-            <!-- Page Content Holder -->
 			<div id="content">
 			    {% block content %}{% endblock %}
-            </div>
-
+			</div>
 		</div>
+		<!-- Page Content Holder -->
+
 		<!-- jQuery Version 1.11.1 -->
 		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 		<!-- Bootstrap Core JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 				integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+
+		<script type="text/javascript" src="https://cdn.datatables.net/searchpanes/1.4.0/js/dataTables.searchPanes.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+
 		<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 		<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 
@@ -53,6 +56,87 @@
 					"sPaginationType": "full_numbers"
 				});
 			 });
+		</script>
+		<script type="text/javascript">
+			$.fn.dataTable.ext.search.push(
+				function( settings, data, dataIndex ) {
+					var min = parseInt( $('#min_id').val(), 10 );
+					var max = parseInt( $('#max_id').val(), 10 );
+					var age = parseFloat( data[0] ) || 0; // use data for the age column
+
+					if ( ( isNaN( min ) && isNaN( max ) ) ||
+						 ( isNaN( min ) && age <= max ) ||
+						 ( min <= age   && isNaN( max ) ) ||
+						 ( min <= age   && age <= max ) )
+					{
+						return true;
+					}
+					return false;
+				}
+			);
+
+			$(document).ready(function() {
+				var table = $('#sorted').DataTable();
+
+				// Event listener to the two range filtering inputs to redraw on input
+				$('#min_id, #max_id').keyup( function() {
+					table.draw();
+				} );
+			} );
+		</script>
+		<script type="text/javascript">
+			$.fn.dataTable.ext.search.push(
+				function( settings, data, dataIndex ) {
+					var min = parseInt( $('#min_cur').val(), 10 );
+					var max = parseInt( $('#max_cur').val(), 10 );
+					var age = parseFloat( data[4] ) || 0; // use data for the age column
+
+					if ( ( isNaN( min ) && isNaN( max ) ) ||
+						 ( isNaN( min ) && age <= max ) ||
+						 ( min <= age   && isNaN( max ) ) ||
+						 ( min <= age   && age <= max ) )
+					{
+						return true;
+					}
+					return false;
+				}
+			);
+
+			$(document).ready(function() {
+				var table = $('#sorted').DataTable();
+
+				// Event listener to the two range filtering inputs to redraw on input
+				$('#min_cur, #max_cur').keyup( function() {
+					table.draw();
+				} );
+			} );
+		</script>
+		<script type="text/javascript">
+			$.fn.dataTable.ext.search.push(
+				function( settings, data, dataIndex ) {
+					var min = parseInt( $('#min_server').val(), 10 );
+					var max = parseInt( $('#max_server').val(), 10 );
+					var age = parseFloat( data[6] ) || 0; // use data for the age column
+
+					if ( ( isNaN( min ) && isNaN( max ) ) ||
+						 ( isNaN( min ) && age <= max ) ||
+						 ( min <= age   && isNaN( max ) ) ||
+						 ( min <= age   && age <= max ) )
+					{
+						return true;
+					}
+					return false;
+				}
+			);
+
+			$(document).ready(function() {
+				var table = $('#sorted').DataTable();
+
+				// Event listener to the two range filtering inputs to redraw on input
+				$('#min_server, #max_server').keyup( function() {
+					table.draw();
+				} );
+			} );
 		</script>
 		<script type="text/javascript">
 		function navConfirm(loc) {
